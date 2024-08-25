@@ -4,7 +4,7 @@
   become: true
   vars:
     interface: enp0s8
-    dhcp_range: eth1,10.0.0.100,10.0.0.120
+    dhcp_range: enp0s8,10.0.0.100,10.0.0.120
     tftp_root: /srv/tftp/amd64
     apache_socket: 10.0.0.20:80
     image_dir: /srv/images
@@ -51,10 +51,13 @@
     - name: Enable ks-server
       ansible.builtin.shell: /usr/sbin/a2ensite ks-server.conf
     - name: Pxelinux congig
-      ansible.builtin.replace:
-        path: /srv/tftp/amd64/pxelinux.cfg/default
-        regexp: '^  APPEND.+$'
-        replace: '  APPEND root=/dev/ram0 ramdisk_size=4000000 ip=dhcp iso-url=http://10.0.0.20/srv/images/ubuntu-24.04-live-server-amd64.iso autoinstall ds=nocloud-net;s=http://10.0.0.20/srv/ks/'
+      ansible.builtin.copy:
+        src: default
+        dest: /srv/tftp/amd64/pxelinux.cfg/default
+      # ansible.builtin.replace:
+      #   path: /srv/tftp/amd64/pxelinux.cfg/default
+      #   regexp: '^  APPEND.+$'
+      #   replace: '  APPEND root=/dev/ram0 ramdisk_size=4000000 ksdevice=bootif ip=dhcp iso-url=http://10.0.0.20/srv/images/ubuntu-24.04-live-server-amd64.iso autoinstall ds=nocloud-net;s=http://10.0.0.20/srv/ks/'
     - name: Autoinstall config
       ansible.builtin.copy:
         src: user-data

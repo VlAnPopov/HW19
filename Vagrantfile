@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
             '--nic1', 'intnet',
             '--intnet1', 'pxenet',
             '--nic2', 'nat',
+            '--cable-connected2', 'off',
             '--boot1', 'net',
             '--boot2', 'none',
             '--boot3', 'none',

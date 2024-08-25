@@ -14,7 +14,7 @@ autoinstall:
     install: false
   identity:
     hostname: linux
-    password: $6$sJgo6Hg5zXBwkkI8$btrEoWAb5FxKhajagWR49XM4EAOfODr5bMrLOkGe3KkMYdsh7T3MU5mYwY2TIMJpVKckAwnZFs2ltUJ1abOZ.
+    password: '$6$PSDMNJ/Blr9XRksB$PRXLwZj.SRMC3Juc0TgDdpMST3RCNDBQhvuOdKEnoStv3uz1yXa.a.KttWgPw.2uEChdD5X2fcPGd4IsBng2b1'
     realname: otus
     username: otus
   kernel:
